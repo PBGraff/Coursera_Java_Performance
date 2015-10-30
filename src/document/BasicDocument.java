@@ -1,7 +1,5 @@
 package document;
 
-import java.util.List;
-
 /** 
  * A naive implementation of the Document abstract class. 
  * @author UC San Diego Intermediate Programming MOOC team
@@ -28,9 +26,7 @@ public class BasicDocument extends Document
 	@Override
 	public int getNumWords()
 	{
-		//TODO: Implement this method.  See the Module 1 support videos 
-	    // if you need help.
-	    return 0;
+		return getTokens("[A-Za-z]+").size();
 	}
 	
 	/**
@@ -44,9 +40,7 @@ public class BasicDocument extends Document
 	@Override
 	public int getNumSentences()
 	{
-	    //TODO: Implement this method.  See the Module 1 support videos 
-        // if you need help.
-        return 0;
+	    return getTokens("[^.!?]+").size();
 	}
 	
 	/**
@@ -60,9 +54,11 @@ public class BasicDocument extends Document
 	@Override
 	public int getNumSyllables()
 	{
-	    //TODO: Implement this method.  See the Module 1 support videos 
-        // if you need help.
-        return 0;
+	    int syllables = 0;
+	    for (String word : getTokens("[A-Za-z]+")) {
+	    	syllables += countSyllables(word);
+	    }
+		return syllables;
 	}
 	
 	

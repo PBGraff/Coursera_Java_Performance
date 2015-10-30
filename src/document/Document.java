@@ -50,10 +50,13 @@ public abstract class Document {
 	// next week when we implement the EfficientDocument class.
 	protected int countSyllables(String word)
 	{
-		// TODO: Implement this method so that you can call it from the 
-	    // getNumSyllables method in BasicDocument (module 1) and 
-	    // EfficientDocument (module 2).
-	    return 0;
+		if (word.endsWith("e")) {
+    		word = word.substring(0, word.length()-1);
+    	}
+    	BasicDocument doc = new BasicDocument(word);
+    	int count = doc.getTokens("[AEIOUYaeiouy]+").size();
+    	if (count == 0) count = 1;
+	    return count;
 	}
 	
 	/** A method for testing
@@ -116,8 +119,10 @@ public abstract class Document {
 	/** return the Flesch readability score of this document */
 	public double getFleschScore()
 	{
-	    // TODO: Implement this method
-	    return 0.0;
+	    double words = (double) getNumWords();
+	    double syllables = (double) getNumSyllables();
+	    double sentences = (double) getNumSentences();
+		return 206.835 - 1.015 * words / sentences - 84.6 * syllables / words;
 	}
 	
 	
