@@ -45,28 +45,18 @@ public abstract class Document {
 	// This is a helper function that returns the number of syllables
 	// in a word.  You should write this and use it in your 
 	// BasicDocument class.
-	protected static int countSyllables(String word)
+	// You will probably NOT need to add a countWords or a countSentences method
+	// here.  The reason we put countSyllables here because we'll use it again
+	// next week when we implement the EfficientDocument class.
+	protected int countSyllables(String word)
 	{
-	    //System.out.print("Counting syllables in " + word + "...");
-		int numSyllables = 0;
-		boolean newSyllable = true;
-		String vowels = "aeiouy";
-		char[] cArray = word.toCharArray();
-		for (int i = 0; i < cArray.length; i++)
-		{
-		    if (i == cArray.length-1 && cArray[i] == 'e' && newSyllable && numSyllables > 0) {
-                numSyllables--;
-            }
-		    if (newSyllable && vowels.indexOf(Character.toLowerCase(cArray[i])) >= 0) {
-				newSyllable = false;
-				numSyllables++;
-			}
-			else if (vowels.indexOf(Character.toLowerCase(cArray[i])) < 0) {
-				newSyllable = true;
-			}
-		}
-		//System.out.println( "found " + numSyllables);
-		return numSyllables;
+		if (word.endsWith("e")) {
+    		word = word.substring(0, word.length()-1);
+    	}
+    	BasicDocument doc = new BasicDocument(word);
+    	int count = doc.getTokens("[AEIOUYaeiouy]+").size();
+    	if (count == 0) count = 1;
+	    return count;
 	}
 	
 	/** A method for testing
@@ -129,10 +119,10 @@ public abstract class Document {
 	/** return the Flesch readability score of this document */
 	public double getFleschScore()
 	{
-		double wordCount = (double)getNumWords();
-		return 206.835 - (1.015 * ((wordCount)/getNumSentences())) 
-				- (84.6 * (((double)getNumSyllables())/wordCount));
-	
+	    double words = (double) getNumWords();
+	    double syllables = (double) getNumSyllables();
+	    double sentences = (double) getNumSentences();
+		return 206.835 - 1.015 * words / sentences - 84.6 * syllables / words;
 	}
 	
 	
