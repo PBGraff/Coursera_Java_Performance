@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class Document {
+public abstract class BackupDocument {
 
 	private String text;
 	
@@ -17,7 +17,7 @@ public abstract class Document {
 	 * Because this class is abstract, this is used only from subclasses.
 	 * @param text The text of the document.
 	 */
-	protected Document(String text)
+	protected BackupDocument(String text)
 	{
 		this.text = text;
 	}
@@ -67,7 +67,7 @@ public abstract class Document {
 	 * @param sentences The expected number of sentences
 	 * @return true if the test case passed.  False otherwise.
 	 */
-	public static boolean testCase(Document doc, int syllables, int words, int sentences)
+	public static boolean testCase(BackupDocument doc, int syllables, int words, int sentences)
 	{
 		System.out.println("Testing text: ");
 		System.out.print(doc.getText() + "\n....");

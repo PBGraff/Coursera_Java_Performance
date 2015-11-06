@@ -4,13 +4,13 @@ package document;
  * A naive implementation of the Document abstract class. 
  * @author UC San Diego Intermediate Programming MOOC team
  */
-public class BasicDocument extends Document 
+public class BackupBasicDocument extends Document 
 {
 	/** Create a new BasicDocument object
 	 * 
 	 * @param text The full text of the Document.
 	 */
-	public BasicDocument(String text)
+	public BackupBasicDocument(String text)
 	{
 		super(text);
 	}
@@ -66,13 +66,13 @@ public class BasicDocument extends Document
 	 * You are encouraged to add your own tests.  */
 	public static void main(String[] args)
 	{
-		testCase(new BasicDocument("This is a test.  How many???  "
+		testCase(new BackupBasicDocument("This is a test.  How many???  "
 		        + "Senteeeeeeeeeences are here... there should be 5!  Right?"),
 				16, 13, 5);
-		testCase(new BasicDocument(""), 0, 0, 0);
-		testCase(new BasicDocument("sentence, with, lots, of, commas.!  "
+		testCase(new BackupBasicDocument(""), 0, 0, 0);
+		testCase(new BackupBasicDocument("sentence, with, lots, of, commas.!  "
 		        + "(And some poaren)).  The output is: 7.5."), 15, 11, 4);
-		testCase(new BasicDocument("many???  Senteeeeeeeeeences are"), 6, 3, 2);		
+		testCase(new BackupBasicDocument("many???  Senteeeeeeeeeences are"), 6, 3, 2);		
 	}
 	
 }
