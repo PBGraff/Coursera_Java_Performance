@@ -25,7 +25,7 @@ public class DictionaryBenchmarking {
 
 		// The number of steps to run.  
 		// You can play around with this.
-		int numSteps = 20;
+		int numSteps = 25;
 		
 		// The number of words to start with. 
 		// You can play around with this.
@@ -33,7 +33,6 @@ public class DictionaryBenchmarking {
 		
 		String notInDictionary = "notaword";
 		
-		// TODO: Play around with the numbers above and graph the output to see trends in the data
 		for (int numToCheck = start; numToCheck < numSteps*increment + start; 
 				numToCheck += increment)
 		{
