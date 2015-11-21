@@ -71,7 +71,6 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
 
 	private TrieNode recurseTrieFind(String s, int i, TrieNode node) {
 		if (i == s.length()-1 || node == null) {
-			System.out.println("Find: returning node "+node.toString()+" for string "+s);
 			return node;
 		} else {
 			if (node.getValidNextCharacters().contains(s.charAt(i+1))) {
